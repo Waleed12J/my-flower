@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>to my flower</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; overflow-x:hidden; font-family:Arial, sans-serif; background:#fdf6f9; position:relative; }
+
+    /* Rising Flowers Background */
+    #rising-bg { position:fixed; bottom:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:-2; }
+    .rising-flower {
+      position:absolute; bottom:-50px; font-size:20px; opacity:0.5;
+      animation: rise 8s linear infinite;
+    }
+    @keyframes rise {
+      to { transform: translateY(-110vh); opacity:0; }
+    }
+
+    /* Sparkles Background */
+    #sparkles {
+      position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;
+      background:url('https://pngimg.com/uploads/sparkle/sparkle_PNG38470.png') repeat;
+      opacity:0.1; animation:sparkleMove 20s linear infinite; z-index:-1;
+    }
+    @keyframes sparkleMove { to { background-position:2000px 2000px; }}
+
+    .section {
+      position:relative; min-height:100vh;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+    }
+
+    .rose-btn { font-size:6rem; background:none; border:none; cursor:pointer;
+      transition:transform .2s; text-shadow:0 0 20px #e91e63; }
+    .rose-btn:hover { transform:scale(1.3); }
+
+    .text-box {
+      margin-top:20px; background:rgba(255,255,255,0.95);
+      padding:30px 40px; border-radius:15px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      opacity:0; transform:scale(0.8);
+      transition:opacity .4s ease, transform .4s ease;
+      max-width:80%; text-align:center; font-size:1.6rem; color:#e91e63;
+    }
+    .text-box.visible { opacity:1; transform:scale(1); }
+
+    .companion-roses { margin-top:10px; display:flex; gap:20px;
+      opacity:0; transition:opacity .4s ease; }
+    .companion-roses.visible { opacity:1; }
+    .companion-roses span { font-size:3rem; }
+
+    /* New Image Box */
+    .image-box {
+      margin-top:20px; background:rgba(255,255,255,0.95);
+      padding:30px 40px; border-radius:15px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      opacity:0; transform:scale(0.8);
+      transition:opacity .4s ease, transform .4s ease;
+      max-width:80%; text-align:center;
+    }
+    .image-box.visible { opacity:1; transform:scale(1); }
+    .image-box img {
+      max-width:100%; height:auto; border-radius:10px;
+    }
+
+    .petal, .flower, .heart {
+      position:fixed;
+      font-size:24px;
+      animation: floatUp 10s linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="sparkles"></div>
+  <div id="rising-bg"></div>
+  <audio id="bgAudio" loop autoplay>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+  <button id="audioToggle">🔊</button>
+ 
+  
+
+  <!-- Existing Five Vertical Sections -->
+  <section class="section">
+    <button class="rose-btn" data-msg="فى بحر عينيكِ هامت كُل أشواقى
+يا رّبة الحسن، هل تنوينَ إغراقى !
+ما كُنت أؤمِن بالعُيون وفِعلهَا
+حتى دهتنى فى الهوى عيناك.">🌹</button>
+    <div class="text-box">You are my eternal bloom.</div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+  <section class="section">
+    <button class="rose-btn" data-msg="وَأغار اَن يغرَم أحد بِعَينَيكِ
+وَلا يعلم انهَا لِي
+وَأغار مِن عَين تَتَأمل عينَاك
+وَانا المغرَم بِها.">🌹</button>
+    <div class="text-box">Every petal whispers your name.</div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+  <section class="section">
+    <button class="rose-btn" data-msg="وأنّي أحبُك حُبًا أنتَ تَجْهَلهُ ما بالَقَلْبَ كَلا يَعرفُ حُبي لهُ؟
+هَلْ تَعْلَمُ أنّي عندَما أحادثُكَ يُرَفْرِفَ قَلبِي مُنَبَسِطٌ ومُبتَهجُ">🌹</button>
+    <div class="text-box">My heart blossoms for you.</div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+  <section class="section">
+    <button class="rose-btn" data-msg="سأحفظُ العهدَ إن طالَ البعادُ بنا
+وأكتمُ الشوقَ في قلبي وأخفيهِ
+لأنّ روحك في جنبيّ ساكنةٌ
+فليحفظ اللّهُ قلبي والذي فيهِ.">🌹</button>
+    <div class="text-box">In your eyes, I found my garden.</div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+  <section class="section">
+    <button class="rose-btn" data-msg="وَمَكَثتُ'حينَ'لِقائِها مُتَسائِلاً،
+هَلْ'يَقْدَرُ'الشُعَراءُ'وَصْفَ'كَمالِها؟
+سُبْحانَ'مَنْ'سَوّى الجَمالَ'بِوَجهِها،
+وَتَقاسَمَ'الباقُونَ'ثُلْثَ'جَمالِها..">🌹</button>
+    <div class="text-box">Together we bloom eternally.</div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+
+  <!-- New Section with Image Display -->
+  <section class="section">
+    <!-- ضع مسار الصورة الخاص بك هنا -->
+    <button class="rose-btn" data-img=" my flower.jpeg ">🌹</button>
+    <div class="image-box">
+      <img src="" alt="My flower Image" />
+    </div>
+    <div class="companion-roses"><span>🌹</span><span>🌸</span><span>💐</span><span>🌼</span><span>💕</span></div>
+  </section>
+
+  <script>
+    // Audio control
+    const audio = document.getElementById('bgAudio');
+    const audioBtn = document.getElementById('audioToggle');
+    audioBtn.onclick = () => {
+      if(audio.paused){audio.play();audioBtn.textContent='🔊';}else{audio.pause();audioBtn.textContent='🔈';}
+    };
+    
+    // Type text function
+    function typeText(el, msg) {
+      el.textContent = '';
+      let i = 0;
+      function next() { if(i<msg.length){ el.textContent += msg.charAt(i++); setTimeout(next, 40); }}
+      next();
+    }
+
+    // Section interactions (extended to handle images)
+    document.querySelectorAll('.section').forEach(sec => {
+      const btn = sec.querySelector('.rose-btn');
+      const textBox = sec.querySelector('.text-box');
+      const imgBox  = sec.querySelector('.image-box');
+      const comp    = sec.querySelector('.companion-roses');
+
+      btn.addEventListener('click', () => {
+        // Hide all text and image boxes
+        document.querySelectorAll('.text-box').forEach(tb => tb.classList.remove('visible'));
+        document.querySelectorAll('.image-box').forEach(ib => ib.classList.remove('visible'));
+        document.querySelectorAll('.companion-roses').forEach(cr => cr.classList.remove('visible'));
+
+        if (btn.dataset.img) {
+          // Show image
+          const imgEl = imgBox.querySelector('img');
+          imgEl.src = btn.dataset.img;
+          imgBox.classList.add('visible');
+        } else {
+          // Show text
+          typeText(textBox, btn.dataset.msg);
+          textBox.classList.add('visible');
+        }
+
+        comp.classList.add('visible');
+      });
+    });
+
+    // Generate rising flowers continuously
+    const risingBg = document.getElementById('rising-bg');
+    setInterval(() => {
+      const f = document.createElement('div');
+      f.className = 'rising-flower'; f.textContent='🌹';
+      f.style.left = Math.random()*100+'%'; f.style.fontSize = (10+Math.random()*20)+'px';
+      risingBg.appendChild(f);
+      f.addEventListener('animationend', ()=>f.remove());
+    }, 500);
+
+    // Generate floating animations
+    for (let i = 0; i < 300; i++) {
+      const el = document.createElement('div');
+      const r = Math.random();
+      if (r < 0.4) { el.className = 'petal'; el.textContent = '🌸'; }
+      else if (r < 0.7) { el.className = 'flower'; el.textContent = '🌼'; }
+      else { el.className = 'heart'; el.textContent = '💕'; }
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.bottom = Math.random() * 10 + 'vh';
+      el.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(el);
+    }
+  </script>
+</body>
+</html>
